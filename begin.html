@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Beginner</title>
+</head>
+<style>
+    * {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .container {
+        background-color: rgb(116, 209, 107);
+        width: 100%;
+        height: 100vh;
+        background-size: 100% 100%;
+        place-items: center;
+    }
+
+    .header {
+        display: flex;
+        box-sizing: border-box;
+        padding: 10px;
+        background-repeat: no-repeat;
+        background-size: 100% 100px;
+        position: relative;
+        width: 100%;
+        height: 100px;
+        background-color: rgb(88, 167, 9);
+        display: flex;
+    }
+
+    .header:hover {
+        box-shadow: 3px 10px 15px 0px rgb(243, 239, 25);
+    }
+
+    .header i,
+    h3 {
+        left: 75%;
+        line-height: 80px;
+        text-align: right;
+        height: 100%;
+    }
+
+    .header h3 {
+        padding-right: 10px;
+        width: 15%;
+        height: auto;
+    }
+
+    .header i {
+        width: 2%;
+        height: auto;
+        color: yellow;
+
+    }
+
+    .header #menuTabs {
+        display: flex;
+        /* border: 2px solid red; */
+        width: 93%;
+        box-sizing: border-box;
+        padding: 5px 30px 10px 30px;
+    }
+
+    #logo {
+        width: 10%;
+        height: 100%;
+        background-image: url(/Lybrary/AX.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        border-radius: 20px;
+        margin-right: 10px;
+        /* border: 2px solid red; */
+    }
+
+    #logo:hover {
+        box-shadow: 3px 10px 10px yellow,
+            inset -5px -5px 3px rgb(13, 134, 19),
+            inset 1px 1px 1px rgb(13, 134, 19);
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    #menuList {
+        /* border: 2px solid blue; */
+        background-color: rgb(117, 201, 33);
+        box-shadow: inset 5px 10px 3px rgb(122, 172, 46);
+        width: 90%;
+        height: 100%;
+        display: flex;
+        box-sizing: border-box;
+        padding: 5px 10px 5px 10px;
+    }
+
+    .menu-list-number {
+        display: flex;
+        background-color: rgb(38, 238, 28);
+
+        /* border: 2px solid yellow; */
+        width: calc(100% / 6);
+        box-sizing: border-box;
+        padding: 0px 20px 0px 0px;
+        box-shadow: 5px 5px 3px,
+            inset -5px 5px 5px rgb(143, 242, 5);
+        border-radius: 10px;
+        margin-left: 10px;
+
+    }
+
+    .menu-list-number .fa {
+        /* border: 2px solid red; */
+        width: 10%;
+        line-height: 60px;
+        text-align: center;
+    }
+
+    .menu-list-number .listItems {
+        box-sizing: border-box;
+        /* border: 2px solid blue; */
+        font-size: 16px;
+        width: 90%;
+        line-height: 60px;
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    .menu-list-number:hover {
+        color: red;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: rgb(54, 231, 30);
+        font-family: Arial, Helvetica, sans-serif;
+        box-shadow: 5px 5px 3px yellow,
+            inset -5px 5px 5px rgb(143, 242, 5);
+
+    }
+
+    #menu {
+        position: absolute;
+        top: 100px;
+        right: 5px;
+        display: none;
+        border: 5px double red;
+        border-radius: 10px;
+    }
+
+    .header i:hover {
+        cursor: pointer;
+        color: red;
+
+    }
+
+    #menu div {
+        background-color: rgb(242, 250, 17);
+        border-bottom: 1px solid red;
+        padding: 10px;
+        font-size: 20px;
+        border-radius: 5px;
+    }
+
+    #menu div:hover {
+        color: red;
+        cursor: pointer;
+    }
+
+    .background-modal {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        top: 0px;
+        background-color: rgb(172, 178, 184);
+        background-size: 100% 100%;
+        display: none;
+    }
+
+    .logout-message {
+        position: absolute;
+        top: 200px;
+        left: 400px;
+        border: 2px solid red;
+        width: 700px;
+        height: 200px;
+        background-color: rgb(226, 73, 73);
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding: 40px;
+        text-align: center;
+        display: none;
+    }
+
+    .logout-message div,
+    a {
+        font-size: 30px;
+    }
+
+    .changePassword {
+        position: relative;
+        top: calc(-200vh + 100px);
+        left: 42%;
+        width: 330px;
+        height: 450px;
+        background-color: rgb(7, 201, 52);
+        box-sizing: border-box;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 20px 10px 30px rgb(234, 242, 8),
+            inset 20px 10px 30px rgb(21, 64, 23);
+        display: none;
+    }
+
+    .changePassword input {
+        width: 200px;
+        border-radius: 7px;
+        height: 25px;
+        outline: none;
+    }
+
+    .changePassword button {
+        position: relative;
+        top: 50px;
+        border-radius: 10px;
+        position: relative;
+        margin: 10px 0px 0px 20px;
+        width: 80px;
+        height: 40px;
+        left: 0%;
+        border: none;
+        transition: all .4s ease-in-out;
+    }
+
+    button:hover {
+        cursor: pointer;
+        background-image: linear-gradient(to right, green, yellow);
+        transition: all .4s ease-in-out;
+        box-shadow: 2px 3px 5px 0 red;
+    }
+
+    .changePassword i {
+        position: relative;
+        left: -30px;
+    }
+
+    .changePassword i:hover {
+        cursor: pointer;
+    }
+
+    #oldPasswordError,
+    #passwordError,
+    #passwordExits,
+    #confirmPasswordError {
+        display: none;
+    }
+
+    .changePassword-modal {
+        position: relative;
+        top: -100vh;
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(130, 226, 85);
+        border: 2px solid red;
+        opacity: 50%;
+        display: none;
+    }
+
+    .user-infor {
+        position: relative;
+        top: calc(-100vh + 100px);
+        border-radius: 20px;
+        background-color: rgb(157, 221, 92);
+        box-sizing: border-box;
+        width: 400px;
+        height: 300px;
+        margin: 0 auto;
+        padding: 40px;
+        box-shadow: 3px 15px 10px;
+        display: none;
+    }
+
+    .user-infor pre {
+        /* border: 2px solid red; */
+        width: 100%;
+        font-size: 14px;
+    }
+
+    #user-infor-modal {
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100vh;
+        background-color: aqua;
+        opacity: 50%;
+        display: none;
+    }
+
+    .update-infor {
+        position: relative;
+        border: 2px solid red;
+        top: calc(-100vh - 200px);
+        width: 400px;
+        height: 380px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        border-radius: 20px;
+        padding: 40px;
+        background-color: rgb(232, 232, 51);
+        display: none;
+        box-shadow: 5px 10px 5px;
+    }
+
+    .update-infor input {
+        width: 300px;
+        height: 20px;
+        padding-left: 10px;
+        border-radius: 10px;
+        outline: none;
+    }
+
+    .update-notifi a {
+        color: red;
+    }
+
+    .update-notifi a:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        color: blue;
+    }
+
+    .update-notifi a {
+        font-size: 16px;
+    }
+
+    .update-infor button {
+        top: 7px;
+        border-radius: 10px;
+        position: relative;
+        margin: 10px 0px 0px 20px;
+        width: 100px;
+        height: 40px;
+        left: 25px;
+        border: none;
+        transition: all .4s ease-in-out;
+    }
+
+    .update-infor button:hover {
+        cursor: pointer;
+        background-image: linear-gradient(to right, green, yellow);
+        transition: all .4s ease-in-out;
+        box-shadow: 2px 3px 5px 0 red;
+    }
+
+    .search {
+        /* border: 2px solid blue; */
+        width: 100%;
+        height: 30px;
+        box-sizing: border-box;
+        padding: 2px 10px 2px;
+        text-align: right;
+    }
+
+    input[type="search"] {
+        outline: none;
+        box-shadow: inset 2px 3px rgb(171, 168, 168);
+        border-radius: 5px;
+        width: 100px;
+        height: 100%;
+        transition: 0.4s all ease-in-out;
+    }
+
+    input[type="search"]:focus {
+        width: 300px;
+    }
+
+    .body-page {
+        /* border: 2px solid red; */
+        width: 100%;
+        height: calc(100% - 100px - 30px);
+        display: flex;
+
+    }
+
+    .body-list {
+        width: 15%;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        background-color: rgb(128, 222, 115);
+    }
+
+    .body-list-items {
+        /* border: 2px solid blue; */
+        width: 100%;
+        height: 70%;
+        box-sizing: border-box;
+        padding: 10px;
+        background-color: rgb(84, 162, 74);
+        box-shadow: inset 5px 10px 5px 5px rgb(5, 115, 5),
+            inset 5px -2px 1px rgb(5, 115, 5);
+    }
+
+    .listItems a {
+        text-decoration-line: none;
+        font-size: 18px;
+    }
+
+    .news {
+        /* border: 2px solid yellow; */
+        width: 100%;
+        height: 50px;
+        background-color: rgb(117, 206, 105);
+        box-shadow: 5px 10px 5px,
+            inset -5px -5px 0px 2px rgb(19, 234, 19);
+        border-radius: 10px;
+        line-height: 50px;
+        text-align: center;
+        font-size: large;
+    }
+
+    .news:hover {
+        box-shadow: 5px 10px 5px rgb(232, 232, 61),
+            inset -5px -5px 0px 2px rgb(19, 234, 19);
+        color: red;
+        font-size: larger;
+        cursor: pointer;
+        background-color: rgb(74, 228, 35);
+
+    }
+
+    .contact {
+        border: 4px double red;
+        height: calc(30% - 10px);
+        margin: 10px 0 10px 0;
+        box-sizing: border-box;
+        padding: 10px;
+
+    }
+
+    .contact p {
+        border-bottom: 2px solid red;
+        height: 30px;
+        line-height: 30px;
+        font-size: 18px;
+    }
+
+    .contact .contact-icons {
+        /* border: 2px solid blue; */
+        width: 50px;
+        height: 30px;
+    }
+
+    .contact .fa:hover {
+        box-shadow: 3px 5px 3px,
+            inset -1px -1px 0px 1px rgb(19, 234, 19);
+        border-radius: 2px;
+        background-color: rgb(28, 230, 28);
+    }
+
+    .body-page .body-content {
+        /* border: 2px solid yellow; */
+        width: 84%;
+        height: calc(100% - 1vh);
+        box-sizing: border-box;
+        background-color: white;
+        box-shadow: inset 5px 10px rgb(177, 171, 171);
+        padding: 10px 0 0 5px;
+    }
+
+    .main-text {
+        position: relative;
+        top: -550px;
+        margin: 30px 80px 0 80px;
+        text-align: justify;
+    }
+
+    .main-text p {
+        padding: 20px;
+        border-radius: 6px;
+        background-color: rgb(151, 234, 92);
+        border: 2px solid red;
+        height: 400px;
+        overflow: auto;
+    }
+
+    .main-content-modal {
+        background-image: url(/Lybrary/y-nghia-hoa-anh-dao-960.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        opacity: 80%;
+        /* border: 2px solid red; */
+        height: 100%;
+        opacity: 50%;
+        /* position: fixed;  */
+    }
+
+    .main-content {
+        position: relative;
+        top: -100%;
+        /* border: 2px solid red; */
+        height: 100%;
+        padding: 100px;
+        box-sizing: border-box;
+        display: none;
+    }
+
+    .hira-img {
+        position: absolute;
+        width: 90%;
+        height: 80%;
+        border: 2px solid blue;
+        top: 0%;
+        left: 0%;
+        background-image: url(/Lybrary/hiragana.png);
+        background-repeat: repeat;
+        background-size: 100% 100%;
+        display: none;
+        box-sizing: border-box;
+        margin: 60px;
+    }
+
+    .kata-img {
+        position: absolute;
+        width: 90%;
+        height: 80%;
+        border: 2px solid blue;
+        top: 0%;
+        left: 0%;
+        background-image: url(/Lybrary/katakana.png);
+        background-repeat: repeat;
+        background-size: 100% 100%;
+        display: none;
+        box-sizing: border-box;
+        margin: 60px;
+    }
+
+    .am-ghep-img {
+        position: absolute;
+        width: 90%;
+        height: 80%;
+        border: 2px solid blue;
+        top: 0%;
+        left: 0%;
+        background-image: url(/Lybrary/am_ghep.jpg);
+        background-repeat: repeat;
+        background-size: 100% 100%;
+        display: none;
+        box-sizing: border-box;
+        margin: 60px;
+    }
+
+    .back-icon {
+        position: absolute;
+        top: 3%;
+        left: 4%;
+        display: none;
+    }
+
+    .main-content .selection {
+        /* border: 2px solid red; */
+        height: 50%;
+        display: flex;
+        font-size: 50px;
+        line-height: 160px;
+        justify-content: center;
+    }
+
+    .alphabe {
+        /* border: 2px solid blue; */
+        width: 50%;
+        height: 100%;
+        text-align: center;
+    }
+
+    .hiragana {
+        background-color: yellowgreen;
+        border-radius: 10px;
+    }
+
+    .hiragana:hover {
+        opacity: 70%;
+        border: 2px solid red;
+        cursor: pointer;
+
+    }
+
+    .katakana {
+        background-color: orange;
+        border-radius: 10px;
+    }
+
+    .katakana:hover {
+        opacity: 70%;
+        border: 2px solid red;
+        cursor: pointer;
+
+    }
+
+    .am-ghep {
+        background-color: rgb(44, 236, 44);
+        border-radius: 10px;
+    }
+
+    .am-ghep:hover {
+        opacity: 70%;
+        border: 2px solid red;
+        cursor: pointer;
+
+    }
+
+    .mcbody-panner {
+        border: 2px solid red;
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    #banner {
+        border-radius: 10px;
+    }
+
+    .main-btn,
+    .main-close-btn {
+        width: 100px;
+        height: 40px;
+        border-radius: 5px;
+        border: none;
+        position: relative;
+    }
+
+    .main-btn {
+        left: 91%;
+    }
+</style>
+
+<body onload="check()">
+
+
+    <div class="container">
+        <div class="header">
+            <div id="menuTabs">
+                <div id="logo" onclick="window.location.href = '/homepage.html'"></div>
+                <div id="menuList">
+                    <div class="menu-list-number">
+                        <span class="listItems"><a href="/begin.html" target="_self">Beginner</a></span>
+                    </div>
+                    <div class="menu-list-number">
+                        <span class="listItems"><a href="" target="#">Elementary</a></span>
+                    </div>
+                    <div class="menu-list-number">
+                        <span class="listItems"><a href="" target="#">Intermediate</a></span>
+                    </div>
+                    <div class="menu-list-number">
+                        <span class="listItems"><a href="" target="#">Advanced</a></span>
+                    </div>
+                    <div class="menu-list-number">
+                        <span class="listItems"><a href="" target="#">Kanji</a></span>
+                    </div>
+                    <div class="menu-list-number">
+                        <span class="listItems"><a href="/test.html" target="#">Test</a></span>
+                    </div>
+                </div>
+            </div>
+            <h3 class="user" id="user"></h3>
+            <i onclick="showList()" class="fa-solid fa-user fa-2x"></i>
+
+        </div>
+        <div class="search">
+            <!-- <label for="search-input">Search</label>
+            <input id="search-input" type="search" placeholder="Enter keywords"> -->
+        </div>
+        <div class="body-page">
+            <div class="body-list">
+                <div class="body-list-items">
+                    <div class="news">Daily News</div>
+                    <div class="news" onclick="window.location.href= '/dictionary.html'">Dictionary</div>
+                    <div class="news">Web of reference</div>
+
+                </div>
+                <div class="contact">
+                    <p>Contact Us</p>
+                    <a href="https://mail.google.com/mail/u/0/#inbox" class="contact-icons"><i
+                            class="fa-solid fa-envelope fa"></i></a><br>
+                    <a href="#" class="contact-icons"><i class="fa-solid fa-phone fa"></i></a> <br>
+                    <a href="https://www.facebook.com/Fongdeying" class="contact-icons"><i
+                            class="fa-brands fa-facebook fa"></i></a> <br>
+                </div>
+            </div>
+            <div class="body-content">
+                <div class="main-content-modal"></div>
+                <div class="main-text">
+                    <p id="main-text" style="font-family: 'Times New Roman', Times, serif ;font-size:18px">
+                        1. HỌC BẢNG CHỮ CÁI TIẾNG NHẬT HIRAGANA <br>
+                        <br>
+                        Hiragana là chữ tượng thanh, biểu âm (mỗi chữ thể hiện một âm), hình thành dựa trên cách viết
+                        của Kanji nhưng nét viết mềm mại hơn nên còn được gọi là chữ mềm. <br>
+                        <br>
+                        Hiragana được dùng để ghi các từ gốc Nhật, biểu âm cho Kanji và biểu thị các thành tố ngữ pháp
+                        như trợ từ, trợ động từ và đuôi biến đổi của động từ, tính từ.<br>
+                        <br>
+                        2. BẢNG CHỮ CÁI HIRAGANA ĐẦY ĐỦ<br>
+                        <br>
+                        Bảng chữ cái Hiragana khá đầy đủ gồm có 46 âm cơ bản và những dạng biến thể của nó gồm có : âm
+                        đục, âm bán đục, âm ngắt, trường âm và âm ghép .<br>
+                        Cụ thể, Hiragana có 5 nguyên âm cơ bản là あ ( a ) – い ( i ) – う ( u ) – え ( e ) – お ( o ), những
+                        nguyên âm này đứng sau những phụ âm ( k, s, t, n, h, m, y, r, g, z, d, b, p ) và bán nguyên âm (
+                        j, w ) để tạo thành đơn vị chức năng âm .<br>
+                        Đặc biệt, phụ âm ん ( n ) có tính năng là đứng cuối những âm khác tạo thành một từ .<br>
+
+                        Bảng chữ cái Hiragana cơ bản<br>
+                        <br>
+                        46 âm cơ bản trong bảng chữ cái Hiragana<br>
+                        <br>
+                        あ a い i う u え e お o <br>
+                        か ka き ki く ku け ke こ ko<br>
+                        さ sa し shi す su せ se そ so<br>
+                        た ta ち chi つ tsu て te と to<br>
+                        な na に ni ぬ nu ね ne の no<br>
+                        は ha ひ hi ふ fu へ he ほ ho<br>
+                        ま ma み mi む mu め me も mo<br>
+                        や ya ゆ yu よ yo<br>
+                        ら ra り ri る ru れ re ろ ro<br>
+                        わ wa を wo<br>
+                        ん n<br>
+                        <br>
+                        Âm đục, âm bán đục trong Hiragana <br>
+
+                        Âm đục: Thêm dấu「〃」(gọi là tenten) vào phía trên bên phải các chữ cái hàng Ka, Sa, Ta, Ha.<br>
+
+                        Âm bán đục: Thêm dấu「〇」(gọi là maru) vào phía trên bên phải các chữ cái của hàng Ha.<br>
+                        <br>
+                        が ga ぎ gi ぐ gu げ ge ご go<br>
+                        ざ za じ ji ず zu ぜ ze ぞ zo<br>
+                        だ da ぢ di/ji ず du/zu で de ど do<br>
+                        ば ba び bi ぶ bu べ be ぼ bo<br>
+                        ぱ pa ぴ pi ぷ pu ぺ pe ぽ po<br>
+                        <br>
+                        Âm ghép trong bảng Hiragana<br>
+                        <br>
+                        Âm ghép trong bảng chữ cái Hiragana được tạo thành bằng cách ghép các chữ cái thuộc hàng い với 3
+                        chữ cái や、ゆ、よ.<br>
+                        <br>
+                        きゃ kya きゅ kyu きょ kyo<br>
+                        しゃ sha しゅ shu しょ sho<br>
+                        ちゃ cha ちゅ chu ちょ cho<br>
+                        にゃ nya にゅ nyu にょ nyo<br>
+                        ひゃ hya ひゅ hyu ひょ hyo<br>
+                        みゃ mya みゅ myu みょ myo<br>
+                        りゃ rya りゅ ryu りょ ryo<br>
+                        ぎゃgya ぎゅ gyu ぎょ gyo<br>
+                        じゃ ja じゅ ju じょ jo<br>
+                        びゃ bya びゅ byu びょ byo<br>
+                        ぴゃ pya ぴゅ pyu ぴょ pyo<br>
+                        <br>
+                        CÁCH VIẾT CHỮ CÁI HIRAGANA<br>
+                        <br>
+                        Chữ cái Hiragana khác hoàn toàn với hệ thống chữ viết latinh hiện tại chúng ta đang sử dụng, vì
+                        vậy có thể nói cách viết chữ cái Hiragana sao cho chuẩn đẹp là tương đối khó khăn khi mới bắt
+                        đầu học.<br>
+                        Tuy nhiên những bạn cũng đừng quá lo ngại, chỉ cần ghi nhớ một quy tắc dưới đây và rèn luyện
+                        nhiều lần là sẽ ổn thôi .<br>
+
+                        ・ Nét bên trái viết trước, nét bên phải viết sau<br>
+                        ・ Nét bên trên viết trước, nét bên dưới viết sau<br>
+                        ・ Nét ngang viết trước, nét sổ viết sau<br>
+                        ・ Căn chỉnh cho chữ được cân đối, nằm gọn trong một ô vuông<br>
+                    </p>
+                    <button class="main-btn" id="main-btn" onclick="showCart()">Đi tiếp nhé</button>
+                </div>
+                <div class="main-content" id="main-content">
+                    <button class="main-close-btn" id="main-close-btn" onclick="hideCart()">Back</button>
+                    <div class="box">
+                        <div class="selection">
+                            <div class="alphabe hiragana" onclick="show('hiragana')">Hiragana</div>
+                            <div class="alphabe katakana" onclick="show('katakana')">Katakana</div>
+                        </div>
+                        <div class="selection am-ghep" onclick="show('am-ghep')">Âm ghép</div>
+                    </div>
+                    <i class="fa-solid fa-left-long back-icon fa-2x" id="back-icon" onclick="hide('hiragana')"></i>
+                    <div class="hira-img" id="hiragana"></div>
+                    <div class="kata-img" id="katakana"></div>
+                    <div class="am-ghep-img" id="am-ghep"></div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Bảng thông tin acount -->
+        <div id="menu">
+            <div id="infor" onclick="infor()">Account information</div>
+            <div id="change-pass" onclick="showChangeBox()">Change Password</div>
+            <div>My study schedule</div>
+            <div id="logout" onclick="logOut()">Log out</div>
+        </div>
+
+        <!-- Đổi mật khẩu -->
+        <div id="changePassword-modal" class="changePassword-modal"></div>
+        <div id="changePassword" class="changePassword">
+            <label for="oldPassword">Old password</label> <br>
+            <input id="oldPassword" onkeydown="entry1(event,'password')" type="password">
+            <i id="icon1" onclick="showPassword('oldPassword','icon1')" class="fa-solid fa-eye"></i><br>
+            <span id="oldPasswordError">Wrong password</span> <br>
+
+            <label for="password">New password</label><br>
+            <input id="password" onkeydown="entry1(event,'confirmPassword')" type="password">
+            <i id="icon2" onclick="showPassword('password','icon2')" class="fa-solid fa-eye"></i> <br>
+            <span id="passwordExits">Password duplicate</span> <br>
+
+            <label for="confirmPassword">Confirm password</label><br>
+            <input id="confirmPassword" onkeydown="entry(event)" type="password">
+            <i id="icon3" onclick="showPassword('confirmPassword','icon3')" class="fa-solid fa-eye"></i><br>
+            <span id="confirmPasswordError">Password doesn't match</span> <br>
+
+            <button onclick="changePassword()">Save</button>
+            <button onclick="cancel()">Cancel</button>
+        </div>
+        <!-- Thông tin tài khoản -->
+        <div id="user-infor-modal"></div>
+        <div id="user-infor" class="user-infor">
+            <h1>Account information</h1> <br>
+            <pre>
+Username:       <span id="user-name"></span>
+Name:           <span id="name"></span>
+Age:            <span id="age"></span>
+Email:          <span id="eml"></span>
+Mobile number:  <span id="mobile"></span>
+Address:        <span id="address"></span>
+Job:            <span id="jobwork"></span>
+            </pre>
+            <div id="update-notifi" class="update-notifi">(*) <a onclick="updateEntry()">Update information</a></div>
+            <div id="nofi-cancel" class="update-notifi">(x) <a onclick="userOut()">Close</a></div>
+        </div>
+        <!-- Cập nhật thông tin -->
+        <div id="update-infor" class="update-infor">
+            <label for="update-name">Name</label> <br>
+            <input class="update-name" onkeydown="entry1(event,'update-age')" id="update-name" type="text"> <br>
+
+            <label for="update-age">Age</label> <br>
+            <input class="update-age" onkeydown="entry1(event,'update-mobile')" id="update-age" type="number" min="0"> <br>
+
+            <label for="update-mobile">Mobile number</label> <br>
+            <input class="update-mobile" onkeydown="entry1(event,'update-address')" id="update-mobile" type="number">
+            <br>
+            <label for="update-address">Address</label> <br>
+            <input class="update-address" onkeydown="entry1(event,'update-jobwork')" id="update-address" type="text">
+            <br>
+            <label for="update-jobwork" onkeydown="entry(event)">Job</label> <br>
+            <input class="update-jobwork" onkeydown="entry(event)" id="update-jobwork" type="text"> <br> <br>
+
+            <button id="btn-update" onclick="update()">Update</button>
+            <button id="update-cancel" onclick="updateCancel()">Cancel</button>
+        </div>
+    </div>
+    <div class="background-modal" id="background-modal"></div>
+    <div class="logout-message" id="logout-message">
+        <div>You have not signed in</div> <br>
+        <a href="login.html">Login</a>
+    </div>
+
+
+
+    <script>
+        let indexUs = localStorage.getItem("indexLogin");
+        let inforUs = JSON.parse(localStorage.getItem("userInfor"));
+        let inforUserName = document.getElementById("user-name");
+        let inforEml = document.getElementById("eml");
+        let usName = JSON.parse(localStorage.getItem("information"))[indexUs].username;
+        let eml = JSON.parse(localStorage.getItem("information"))[indexUs].email;
+        inforUserName.innerHTML = usName;
+        inforEml.innerHTML = eml;
+        let indexUs1;
+        let flag = true;
+        if (inforUs == null) {
+            inforUs = [];
+            flag = false;
+            indexUs1 = 0;
+        } else {
+            for (let i = 0; i < inforUs.length; i++) {
+                if (inforUs[i].Id == indexUs) {
+                    indexUs1 = i;
+                    flag = true;
+                    break;
+                } else {
+                    flag = false;
+                    indexUs1 = Number(i) + 1;
+                }
+            }
+        }
+        if (inforUs != null) {
+            if (flag == true) {
+                let getIdName = document.getElementById("name");
+                let getIdAge = document.getElementById("age");
+                let getIdMobile = document.getElementById("mobile");
+                let getIdAddress = document.getElementById("address");
+                let getIdJobwork = document.getElementById("jobwork");
+                getIdName.innerHTML = inforUs[indexUs1].Name;
+                getIdAge.innerHTML = inforUs[indexUs1].Age;
+                getIdMobile.innerHTML = inforUs[indexUs1].Mobile;
+                getIdAddress.innerHTML = inforUs[indexUs1].Address;
+                getIdJobwork.innerHTML = inforUs[indexUs1].Jobwork;
+            }
+        }
+        let user = document.getElementById("user");
+        if (inforUs[indexUs1] == null || inforUs[indexUs1].Name == "") {
+            user.innerHTML = inforUserName.innerHTML ;
+        } else {
+            let Name = JSON.parse(localStorage.getItem("userInfor"))[indexUs1].Name;
+            user.innerHTML = Name;
+        }
+
+
+
+        // // check sự kiện handle click 
+        // hideTable("menu");
+        // function hideTable(id) {
+        //     let getId = document.getElementById(id);
+        //     if (getId.style.display === "block") {
+        //         document.addEventListener("click", function handleClick(event) {
+        //             let check = event.target.classList.contains(id);
+        //             console.log(check);
+        //             if (check == false) {
+        //                 getId.setAttribute("style", "display:none");
+        //             }
+        //         });
+        //     }
+        // }
+        // Show các thẻ học
+        function showCart() {
+            let mainText = document.getElementById("main-text");
+            let mainContent = document.getElementById("main-content");
+            let mainBtn = document.getElementById("main-btn");
+            mainText.setAttribute("style", "display:none");
+            mainBtn.setAttribute("style", "display:none");
+            mainContent.setAttribute("style", "display:block");
+        }
+        function hideCart() {
+            let mainText = document.getElementById("main-text");
+            let mainContent = document.getElementById("main-content");
+            let mainBtn = document.getElementById("main-btn");
+            mainText.setAttribute("style", "display:block");
+            mainBtn.setAttribute("style", "display:block");
+            mainContent.setAttribute("style", "display:none");
+        }
+        // Show Hiragana
+        function show(id) {
+            let getID = document.getElementById(id);
+            let backIcon = document.getElementById("back-icon");
+            getID.setAttribute("style", "display:block");
+            backIcon.setAttribute("style", "display:block");
+        }
+        function hide() {
+            let hiraHide = document.getElementById("hiragana");
+            let kataHide = document.getElementById("katakana");
+            let backIcon = document.getElementById("back-icon");
+            let amGhep = document.getElementById("am-ghep")
+            hiraHide.setAttribute("style", "display:none");
+            kataHide.setAttribute("style", "display:none");
+            amGhep.setAttribute("style", "display:none");
+            backIcon.setAttribute("style", "display:none");
+        }
+        // Hàm gán xuất giá trị tên đăng nhập và email
+        function updateInfor(id, value) {
+            let getId = document.getElementById(id);
+            if (inforUs[indexUs1] != undefined) {
+                getId.innerHTML = inforUs[indexUs1][value];
+            }
+        }
+        // Hàm cập nhật thông tin tài khoản
+        function update() {
+            let usName = document.getElementById("update-name").value;
+            let usAge = document.getElementById("update-age").value;
+            let usMobile = document.getElementById("update-mobile").value;
+            let usAddess = document.getElementById("update-address").value;
+            let usJobwork = document.getElementById("update-jobwork").value;
+            let obj = {
+                Id: indexUs,
+                Name: usName,
+                Age: usAge,
+                Mobile: usMobile,
+                Address: usAddess,
+                Jobwork: usJobwork
+            }
+            if (inforUs == null) {
+                inforUs = [];
+                inforUs.push(obj);
+                localStorage.setItem("userInfor", JSON.stringify(inforUs));
+                updateInfor("name", "Name");
+                updateInfor("age", "Age");
+                updateInfor("mobile", "Mobile");
+                updateInfor("address", "Address");
+                updateInfor("jobwork", "Jobwork");
+                let upInfor = document.getElementById("update-infor");
+                upInfor.setAttribute("style", "display:none");
+                return;
+            } else {
+                if (indexUs1 == undefined) {
+                    inforUs.push(obj);
+                    localStorage.setItem("userInfor", JSON.stringify(inforUs));
+                    updateInfor("name", "Name");
+                    updateInfor("age", "Age");
+                    updateInfor("mobile", "Mobile");
+                    updateInfor("address", "Address");
+                    updateInfor("jobwork", "Jobwork");
+                    let upInfor = document.getElementById("update-infor");
+                    upInfor.setAttribute("style", "display:none");
+
+                } else {
+                    inforUs[indexUs1] = obj;
+                    localStorage.setItem("userInfor", JSON.stringify(inforUs));
+                    updateInfor("name", "Name");
+                    updateInfor("age", "Age");
+                    updateInfor("mobile", "Mobile");
+                    updateInfor("address", "Address");
+                    updateInfor("jobwork", "Jobwork");
+                    let upInfor = document.getElementById("update-infor");
+                    upInfor.setAttribute("style", "display:none");
+                }
+            }
+        }
+        // Hàm nhấn Enter thay cho nút
+        function entry(event) {
+            if (event.key == "Enter") {
+                update();
+            }
+        }
+        // Hàm ấn Enter thay cho chuyển Tab
+        function entry1(event, input) {
+            if (event.key == "Enter") {
+                let idInput = document.getElementById(input);
+                idInput.focus();
+            }
+        }
+
+        // Lưu giá trị thông tin người dùng trước đó
+        function currentInfor(id, gt) {
+            let getId = document.getElementById(id);
+            if (inforUs[indexUs1] != undefined) {
+                getId.value = inforUs[indexUs1][gt];
+            }
+        }
+        // Hàm ấn nút cập nhật
+        function updateEntry() {
+            let updateInfor = document.getElementById("update-infor");
+            updateInfor.setAttribute("style", "display:block");
+            currentInfor("update-name", "Name");
+            currentInfor("update-age", "Age");
+            currentInfor("update-mobile", "Mobile");
+            currentInfor("update-address", "Address");
+            currentInfor("update-jobwork", "Jobwork");
+
+        }
+        // Hàm ấn nút hủy cập nhật
+        function updateCancel() {
+            let upInfor = document.getElementById("update-infor");
+            upInfor.setAttribute("style", "display:none");
+        }
+        // Hàm ẩn hiện con mắt xem mật khẩu
+        function showPassword(input, icon) {
+            let getId = document.getElementById(input);
+            let geticon = document.getElementById(icon);
+            if (getId.type == "password") {
+                getId.type = "text";
+                geticon.classList.remove("fa-eye");
+                geticon.classList.add("fa-eye-slash");
+            } else {
+                getId.type = "password";
+                geticon.classList.remove("fa-eye-slash");
+                geticon.classList.add("fa-eye");
+            }
+        }
+        // Hàm ẩn hiện con mắt xem mật khẩu nhập lại
+        function showList() {
+            let menu = document.getElementById("menu");
+            if (menu.style.display == "" || menu.style.display == "none") {
+                menu.setAttribute("style", "display:block");
+            } else {
+                menu.setAttribute("style", "display:none");
+            }
+        }
+        // Hàm kiểm tra xem người dùng đang đăng nhập hay đăng xuất rồi
+        function check() {
+            let index = localStorage.getItem("indexLogin");
+            let logOutMessage = document.getElementById("logout-message");
+            let backgroundModal = document.getElementById("background-modal")
+            if (index == null) {
+                backgroundModal.setAttribute("style", "display:block");
+                logOutMessage.setAttribute("style", "display:block");
+            } else {
+                backgroundModal.setAttribute("style", "display:none");
+                logOutMessage.setAttribute("style", "display:none");
+            }
+        }
+        // Hàm đăng xuất
+        function logOut() {
+            let index = localStorage.getItem("indexLogin");
+            localStorage.setItem("boolLogin", "false");
+            localStorage.setItem("indexLogout", index);
+            localStorage.removeItem("indexLogin");
+            window.location.href = "/login.html";
+        }
+        // Hàm ẩn hiện hộp đổi mật khẩu
+        function showChangeBox() {
+            let changePasswordModal = document.getElementById("changePassword-modal");
+            let changePassword = document.getElementById("changePassword");
+            let menu = document.getElementById("menu");
+            changePasswordModal.setAttribute("style", "display:block");
+            changePassword.setAttribute("style", "display:block");
+            menu.setAttribute("style", "display:none");
+        }
+        // Hàm hủy đổi mật khẩu
+        function cancel() {
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let changePasswordModal = document.getElementById("changePassword-modal");
+            let changePassword = document.getElementById("changePassword");
+            changePasswordModal.setAttribute("style", "display:none");
+            changePassword.setAttribute("style", "display:none");
+        }
+        // Hàm kiểm tra giá trị mật khẩu người dùng nhập vào có trùng trong bộ nhớ hay không
+        function checkInput(id) {
+            let getIndex = Number(localStorage.getItem("index"));
+            let getUserInput = JSON.parse(localStorage.getItem("information"));
+            let idInput = document.getElementById(id).value;
+            if (id == "oldPassword") {
+                if (idInput !== getUserInput[getIndex].password) {
+                    let oldPasswordError = document.getElementById("oldPasswordError");
+                    oldPasswordError.setAttribute("style", "display:block;color:red");
+                } else {
+                    oldPasswordError.setAttribute("style", "display:none");
+                    return true;
+                }
+            } else {
+                if (idInput == getUserInput[getIndex].password) {
+                    let passwordExits = document.getElementById("passwordExits");
+                    passwordExits.setAttribute("style", "display:block;color:red");
+                } else {
+                    passwordExits.setAttribute("style", "display:none");
+                    return true;
+                }
+            }
+        }
+        // Hàm kiểm tra và so sánh khi ấn vào nút lưu để lưu mật khẩu mới
+        function changePassword() {
+            let getUserInput = JSON.parse(localStorage.getItem("information"));
+            let getIndex = Number(localStorage.getItem("index"));
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let confirmPasswordError = document.getElementById("confirmPasswordError");
+            if (checkInput("oldPassword") == true && checkInput("password") == true) {
+                if (password == confirmPassword) {
+                    getUserInput[getIndex].password = password;
+                    localStorage.setItem("information", JSON.stringify(getUserInput));
+                    confirmPasswordError.setAttribute("style", "display:none");
+                    alert("Bạn đã đổi mật khẩu thành công");
+                    document.getElementById("password").value = "";
+                    document.getElementById("oldPassword").value = "";
+                    document.getElementById("confirmPassword").value = "";
+                    cancel();
+                } else {
+                    confirmPasswordError.setAttribute("style", "display:block;color:red");
+                }
+            }
+        }
+        // Hàm hiện bảng thông tin người dùng
+        function infor() {
+            let userInforModal = document.getElementById("user-infor-modal");
+            userInforModal.setAttribute("style", "display:block");
+            let userInfor = document.getElementById("user-infor");
+            userInfor.setAttribute("style", "display:block");
+            let menu = document.getElementById("menu");
+            menu.setAttribute("style", "display:none");
+        }
+        // Hàm đóng bảng thông tin người dùng
+        function userOut() {
+            let userInfor = document.getElementById("user-infor");
+            userInfor.setAttribute("style", "display:none");
+            let userInforModal = document.getElementById("user-infor-modal");
+            userInforModal.setAttribute("style", "display:none");
+            location.reload();
+
+        }
+    </script>
+</body>
+
+</html>

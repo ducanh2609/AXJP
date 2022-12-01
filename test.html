@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Test</title>
+</head>
+<style>
+    * {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .container {
+        background-color: rgb(116, 209, 107);
+        width: 100%;
+        height: 100vh;
+        background-size: 100% 100%;
+        place-items: center;
+    }
+
+    .header {
+        display: flex;
+        box-sizing: border-box;
+        padding: 10px;
+        background-repeat: no-repeat;
+        background-size: 100% 100px;
+        position: relative;
+        width: 100%;
+        height: 100px;
+        background-color: rgb(88, 167, 9);
+        display: flex;
+    }
+
+    .header:hover {
+        box-shadow: 3px 10px 15px 0px rgb(243, 239, 25);
+    }
+
+    .header i,
+    h3 {
+        left: 75%;
+        line-height: 80px;
+        text-align: right;
+        height: 100%;
+    }
+
+    .header h3 {
+        padding-right: 10px;
+        width: 15%;
+        height: auto;
+    }
+
+    .header i {
+        width: 2%;
+        height: auto;
+        color: yellow;
+
+    }
+
+    .header #menuTabs {
+        display: flex;
+        /* border: 2px solid red; */
+        width: 93%;
+        box-sizing: border-box;
+        padding: 5px 30px 10px 30px;
+    }
+
+    #logo {
+        width: 10%;
+        height: 100%;
+        background-image: url(/Lybrary/AX.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        border-radius: 20px;
+        margin-right: 10px;
+        /* border: 2px solid red; */
+    }
+
+    #logo:hover {
+        box-shadow: 3px 10px 10px yellow,
+            inset -5px -5px 3px rgb(13, 134, 19),
+            inset 1px 1px 1px rgb(13, 134, 19);
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    #menuList {
+        /* border: 2px solid blue; */
+        background-color: rgb(117, 201, 33);
+        box-shadow: inset 5px 10px 3px rgb(122, 172, 46);
+        width: 90%;
+        height: 100%;
+        display: flex;
+        box-sizing: border-box;
+        padding: 5px 10px 5px 10px;
+    }
+
+    .menu-list-number {
+        display: flex;
+        background-color: rgb(38, 238, 28);
+
+        /* border: 2px solid yellow; */
+        width: calc(100% / 6);
+        box-sizing: border-box;
+        padding: 0px 20px 0px 0px;
+        box-shadow: 5px 5px 3px,
+            inset -5px 5px 5px rgb(143, 242, 5);
+        border-radius: 10px;
+        margin-left: 10px;
+
+    }
+
+    .menu-list-number .fa {
+        /* border: 2px solid red; */
+        width: 10%;
+        line-height: 60px;
+        text-align: center;
+    }
+
+    .menu-list-number .listItems {
+        box-sizing: border-box;
+        /* border: 2px solid blue; */
+        font-size: 16px;
+        width: 90%;
+        line-height: 60px;
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    .menu-list-number:hover {
+        color: red;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: rgb(54, 231, 30);
+        font-family: Arial, Helvetica, sans-serif;
+        box-shadow: 5px 5px 3px yellow,
+            inset -5px 5px 5px rgb(143, 242, 5);
+
+    }
+
+    #menu {
+        position: absolute;
+        top: 100px;
+        right: 5px;
+        display: none;
+        border: 5px double red;
+        border-radius: 10px;
+    }
+
+    .header i:hover {
+        cursor: pointer;
+        color: red;
+
+    }
+
+    #menu div {
+        background-color: rgb(242, 250, 17);
+        border-bottom: 1px solid red;
+        padding: 10px;
+        font-size: 20px;
+        border-radius: 5px;
+    }
+
+    #menu div:hover {
+        color: red;
+        cursor: pointer;
+    }
+
+    .background-modal {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        top: 0px;
+        background-color: rgb(172, 178, 184);
+        background-size: 100% 100%;
+        display: none;
+    }
+
+    .logout-message {
+        position: absolute;
+        top: 200px;
+        left: 400px;
+        border: 2px solid red;
+        width: 700px;
+        height: 200px;
+        background-color: rgb(226, 73, 73);
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding: 40px;
+        text-align: center;
+        display: none;
+    }
+
+    .logout-message div,
+    a {
+        font-size: 30px;
+    }
+
+    .changePassword {
+        position: relative;
+        top: calc(-200vh + 100px);
+        left: 42%;
+        width: 330px;
+        height: 450px;
+        background-color: rgb(7, 201, 52);
+        box-sizing: border-box;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 20px 10px 30px rgb(234, 242, 8),
+            inset 20px 10px 30px rgb(21, 64, 23);
+        display: none;
+    }
+
+    .changePassword input {
+        width: 200px;
+        border-radius: 7px;
+        height: 25px;
+        outline: none;
+    }
+
+    .changePassword button {
+        position: relative;
+        top: 50px;
+        border-radius: 10px;
+        position: relative;
+        margin: 10px 0px 0px 20px;
+        width: 80px;
+        height: 40px;
+        left: 0%;
+        border: none;
+        transition: all .4s ease-in-out;
+    }
+
+    button:hover {
+        cursor: pointer;
+        background-image: linear-gradient(to right, green, yellow);
+        transition: all .4s ease-in-out;
+        box-shadow: 2px 3px 5px 0 red;
+    }
+
+    .changePassword i {
+        position: relative;
+        left: -30px;
+    }
+
+    .changePassword i:hover {
+        cursor: pointer;
+    }
+
+    #oldPasswordError,
+    #passwordError,
+    #passwordExits,
+    #confirmPasswordError {
+        display: none;
+    }
+
+    .changePassword-modal {
+        position: relative;
+        top: -100vh;
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(130, 226, 85);
+        border: 2px solid red;
+        opacity: 50%;
+        display: none;
+    }
+
+    .user-infor {
+        position: relative;
+        top: calc(-100vh + 100px);
+        border-radius: 20px;
+        background-color: rgb(157, 221, 92);
+        box-sizing: border-box;
+        width: 400px;
+        height: 300px;
+        margin: 0 auto;
+        padding: 40px;
+        box-shadow: 3px 15px 10px;
+        display: none;
+    }
+
+    .user-infor pre {
+        /* border: 2px solid red; */
+        width: 100%;
+        font-size: 14px;
+    }
+
+    #user-infor-modal {
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100vh;
+        background-color: aqua;
+        opacity: 50%;
+        display: none;
+    }
+
+    .update-infor {
+        position: relative;
+        border: 2px solid red;
+        top: calc(-100vh - 200px);
+        width: 400px;
+        height: 380px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        border-radius: 20px;
+        padding: 40px;
+        background-color: rgb(232, 232, 51);
+        display: none;
+        box-shadow: 5px 10px 5px;
+    }
+
+    .update-infor input {
+        width: 300px;
+        height: 20px;
+        padding-left: 10px;
+        border-radius: 10px;
+        outline: none;
+    }
+
+    .update-notifi a {
+        color: red;
+    }
+
+    .update-notifi a:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        color: blue;
+    }
+
+    .update-notifi a {
+        font-size: 16px;
+    }
+
+    .update-infor button {
+        top: 7px;
+        border-radius: 10px;
+        position: relative;
+        margin: 10px 0px 0px 20px;
+        width: 100px;
+        height: 40px;
+        left: 25px;
+        border: none;
+        transition: all .4s ease-in-out;
+    }
+
+    .update-infor button:hover {
+        cursor: pointer;
+        background-image: linear-gradient(to right, green, yellow);
+        transition: all .4s ease-in-out;
+        box-shadow: 2px 3px 5px 0 red;
+    }
+
+    .search {
+        /* border: 2px solid blue; */
+        width: 100%;
+        height: 30px;
+        box-sizing: border-box;
+        padding: 2px 10px 2px;
+        text-align: right;
+    }
+
+    input[type="search"] {
+        outline: none;
+        box-shadow: inset 2px 3px rgb(171, 168, 168);
+        border-radius: 5px;
+        width: 100px;
+        height: 100%;
+        transition: 0.4s all ease-in-out;
+    }
+
+    input[type="search"]:focus {
+        width: 300px;
+    }
+
+    .body-page {
+        /* border: 2px solid red; */
+        width: 100%;
+        height: calc(100% - 100px - 30px);
+        display: flex;
+
+    }
+
+    .body-list {
+        width: 15%;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        background-color: rgb(128, 222, 115);
+    }
+
+    .body-list-items {
+        /* border: 2px solid blue; */
+        width: 100%;
+        height: 70%;
+        box-sizing: border-box;
+        padding: 10px;
+        background-color: rgb(84, 162, 74);
+        box-shadow: inset 5px 10px 5px 5px rgb(5, 115, 5),
+            inset 5px -2px 1px rgb(5, 115, 5);
+    }
+
+    .listItems a {
+        text-decoration-line: none;
+        font-size: 18px;
+    }
+
+    .news {
+        /* border: 2px solid yellow; */
+        width: 100%;
+        height: 50px;
+        background-color: rgb(117, 206, 105);
+        box-shadow: 5px 10px 5px,
+            inset -5px -5px 0px 2px rgb(19, 234, 19);
+        border-radius: 10px;
+        line-height: 50px;
+        text-align: center;
+        font-size: large;
+    }
+
+    .news:hover {
+        box-shadow: 5px 10px 5px rgb(232, 232, 61),
+            inset -5px -5px 0px 2px rgb(19, 234, 19);
+        color: red;
+        font-size: larger;
+        cursor: pointer;
+        background-color: rgb(74, 228, 35);
+
+    }
+
+    .contact {
+        border: 4px double red;
+        height: calc(30% - 10px);
+        margin: 10px 0 10px 0;
+        box-sizing: border-box;
+        padding: 10px;
+
+    }
+
+    .contact p {
+        border-bottom: 2px solid red;
+        height: 30px;
+        line-height: 30px;
+        font-size: 18px;
+    }
+
+    .contact .contact-icons {
+        /* border: 2px solid blue; */
+        width: 50px;
+        height: 30px;
+    }
+
+    .contact .fa:hover {
+        box-shadow: 3px 5px 3px,
+            inset -1px -1px 0px 1px rgb(19, 234, 19);
+        border-radius: 2px;
+        background-color: rgb(28, 230, 28);
+    }
+
+    .body-page .body-content {
+        border: 2px solid yellow;
+        width: 84%;
+        height: calc(100% - 1vh);
+        box-sizing: border-box;
+        background-color: white;
+        box-shadow: inset 5px 10px rgb(177, 171, 171);
+        padding: 10px 0 0 5px;
+    }
+
+    .main-content-modal {
+        background-image: url(/Lybrary/y-nghia-hoa-anh-dao-960.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        opacity: 80%;
+        /* border: 2px solid red; */
+        height: 100%;
+        opacity: 50%;
+        /* position: fixed;  */
+    }
+
+    .main-text {
+        position: relative;
+        top: -100%;
+        /* border: 2px solid blue; */
+        height: 90%;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+
+    .question {
+        border: 2px solid red;
+        border-radius: 30px;
+        height: 45%;
+        box-sizing: border-box;
+        padding: 20px;
+        line-height: 150px;
+        justify-content: center;
+        text-align: center;
+        overflow: auto;
+        font-size: 70px;
+        background-color: rgb(132, 232, 127);
+    }
+
+    .answer {
+        margin-top: 10px;
+        /* border: 2px solid yellow; */
+        height: 55%;
+        box-sizing: border-box;
+        padding: 20px;
+        /* display: flex; */
+    }
+
+    .answer-result {
+        float: left;
+        border-radius: 20px;
+        width: 25%;
+        border: 2px solid;
+        box-sizing: border-box;
+        line-height: 180px;
+        justify-content: center;
+        text-align: center;
+        overflow: auto;
+        font-size: 70px;
+        background-color: rgb(204, 144, 226);
+        box-shadow: inset -10px 10px 5px rgb(227, 185, 243);
+    }
+
+    .answer-result:hover {
+        box-shadow: inset -15px 15px 5px rgb(223, 234, 140),
+            10px 15px 10px;
+        cursor: pointer;
+    }
+
+    .answer-modal {
+        position: relative;
+        top: -57%;
+        margin-top: 10px;
+        /* border: 2px solid yellow; */
+        height: 55%;
+        box-sizing: border-box;
+        padding: 20px;
+        display: none;
+    }
+
+    .main-content {
+        font-size: 25px;
+        position: relative;
+        top: -100%;
+        height: 10%;
+        /* border: 2px solid red; */
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-around;
+        line-height: 30px;
+        padding: 10px;
+        background-color: rgb(62, 62, 216);
+        /* display: none; */
+    }
+
+    .main-content span {
+        position: relative;
+        font-size: 25px;
+        text-align: center;
+        left: -65px;
+        border: 2px solid;
+        width: 50px;
+        box-sizing: border-box;
+        background-color: rgb(143, 143, 219);
+        border-radius: 20px;
+        color: red;
+    }
+
+    .main-content button {
+        font-size: 25px;
+        border-radius: 10px;
+        border: none;
+    }
+
+    .test-menu {
+        border: 2px solid red;
+        border-radius: 20px;
+        background-color: rgb(114, 218, 88);
+        width: 80%;
+        margin: 90px;
+        height: 350px;
+        box-sizing: border-box;
+        padding: 20px;
+        font-size: 30px;
+        overflow: auto;
+    }
+
+    .test-menu p:hover {
+        font-size: larger;
+        color: red;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+</style>
+
+<body onload="check()">
+
+
+    <div class="container">
+        <div class="header">
+            <div id="menuTabs">
+                <div id="logo" onclick="window.location.href = '/homepage.html'"></div>
+                <div id="menuList">
+                    <div class="menu-list-number">
+                        <span class="listItems"><a href="/begin.html" target="_self">Beginner</a></span>
+                    </div>
+                    <div class="menu-list-number">
+                        <span class="listItems"><a href="" target="#">Elementary</a></span>
+                    </div>
+                    <div class="menu-list-number">
+                        <span class="listItems"><a href="" target="#">Intermediate</a></span>
+                    </div>
+                    <div class="menu-list-number">
+                        <span class="listItems"><a href="" target="#">Advanced</a></span>
+                    </div>
+                    <div class="menu-list-number">
+                        <span class="listItems"><a href="" target="#">Kanji</a></span>
+                    </div>
+                    <div class="menu-list-number">
+                        <span class="listItems"><a href="/test.html" target="#">Test</a></span>
+                    </div>
+                </div>
+            </div>
+            <h3 class="user" id="user"></h3>
+            <i onclick="showList()" class="fa-solid fa-user fa-2x"></i>
+
+        </div>
+        <div class="search">
+            <!-- <label for="search-input">Search</label>
+            <input id="search-input" type="search" placeholder="Enter keywords"> -->
+        </div>
+        <div class="body-page">
+            <div class="body-list">
+                <div class="body-list-items">
+                    <div class="news">Daily News</div>
+                    <div class="news" onclick="window.location.href= '/dictionary.html'">Dictionary</div>
+                    <div class="news">Web of reference</div>
+
+                </div>
+                <div class="contact">
+                    <p>Contact Us</p>
+                    <a href="https://mail.google.com/mail/u/0/#inbox" class="contact-icons"><i
+                            class="fa-solid fa-envelope fa"></i></a><br>
+                    <a href="#" class="contact-icons"><i class="fa-solid fa-phone fa"></i></a> <br>
+                    <a href="https://www.facebook.com/Fongdeying" class="contact-icons"><i
+                            class="fa-brands fa-facebook fa"></i></a> <br>
+                </div>
+            </div>
+            <div class="body-content">
+                <div class="main-content-modal"></div>
+                <div class="main-text">
+                    <div class="test-menu" id="test-menu">
+                        <p id="beginner-test" onclick="beginnerTestShow()">1. Bài thi cho người mới bắt đầu</p>
+                        <p id="elementary-test">2. Bài thi trình độ sơ cấp</p>
+                    </div>
+                    <div id="question" class="question" style="display: none;"></div>
+                    <div class="answer" id="answer" style="display: none;">
+                        <div id="answer-1" class="answer-result" onclick="checkAnswer('answer-1','question')"></div>
+                        <div id="answer-2" class="answer-result" onclick="checkAnswer('answer-2','question')"></div>
+                        <div id="answer-3" class="answer-result" onclick="checkAnswer('answer-3','question')"></div>
+                        <div id="answer-4" class="answer-result" onclick="checkAnswer('answer-4','question')"></div>
+                    </div>
+                    <div class="answer-modal" id="answer-modal"></div>
+                </div>
+                <div class="main-content" id="main-content">
+                    Câu đúng:<span class="result-property" id="right-ans">0</span>
+                    Câu sai:<span class="result-property" id="wrong-ans">0</span>
+                    Điểm:<span class="result-property" id="point">0</span>
+                    <button id="btn-back-ques" style="display:none" onclick="backQues()">Back</button>
+                    <button id="btn-next-ques" style="display: none; width:110px" onclick="nextQues()">Next</button>
+                    <button id="btn-complete" style="display:none" onclick="complete()">Complete</button>
+                </div>
+            </div>
+        </div>
+        <!-- Bảng thông tin acount -->
+        <div id="menu">
+            <div id="infor" onclick="infor()">Account information</div>
+            <div id="change-pass" onclick="showChangeBox()">Change Password</div>
+            <div>My study schedule</div>
+            <div id="logout" onclick="logOut()">Log out</div>
+        </div>
+
+        <!-- Đổi mật khẩu -->
+        <div id="changePassword-modal" class="changePassword-modal"></div>
+        <div id="changePassword" class="changePassword">
+            <label for="oldPassword">Old password</label> <br>
+            <input id="oldPassword" onkeydown="entry1(event,'password')" type="password">
+            <i id="icon1" onclick="showPassword('oldPassword','icon1')" class="fa-solid fa-eye"></i><br>
+            <span id="oldPasswordError">Wrong password</span> <br>
+
+            <label for="password">New password</label><br>
+            <input id="password" onkeydown="entry1(event,'confirmPassword')" type="password">
+            <i id="icon2" onclick="showPassword('password','icon2')" class="fa-solid fa-eye"></i> <br>
+            <span id="passwordExits">Password duplicate</span> <br>
+
+            <label for="confirmPassword">Confirm password</label><br>
+            <input id="confirmPassword" onkeydown="entry(event)" type="password">
+            <i id="icon3" onclick="showPassword('confirmPassword','icon3')" class="fa-solid fa-eye"></i><br>
+            <span id="confirmPasswordError">Password doesn't match</span> <br>
+
+            <button onclick="changePassword()">Save</button>
+            <button onclick="cancel()">Cancel</button>
+        </div>
+        <!-- Thông tin tài khoản -->
+        <div id="user-infor-modal"></div>
+        <div id="user-infor" class="user-infor">
+            <h1>Account information</h1> <br>
+            <pre>
+Username:       <span id="user-name"></span>
+Name:           <span id="name"></span>
+Age:            <span id="age"></span>
+Email:          <span id="eml"></span>
+Mobile number:  <span id="mobile"></span>
+Address:        <span id="address"></span>
+Job:            <span id="jobwork"></span>
+            </pre>
+            <div id="update-notifi" class="update-notifi">(*) <a onclick="updateEntry()">Update information</a></div>
+            <div id="nofi-cancel" class="update-notifi">(x) <a onclick="userOut()">Close</a></div>
+        </div>
+        <!-- Cập nhật thông tin -->
+        <div id="update-infor" class="update-infor">
+            <label for="update-name">Name</label> <br>
+            <input class="update-name" onkeydown="entry1(event,'update-age')" id="update-name" type="text"> <br>
+
+            <label for="update-age">Age</label> <br>
+            <input class="update-age" onkeydown="entry1(event,'update-mobile')" id="update-age" type="number" min="0">
+            <br>
+
+            <label for="update-mobile">Mobile number</label> <br>
+            <input class="update-mobile" onkeydown="entry1(event,'update-address')" id="update-mobile" type="number">
+            <br>
+            <label for="update-address">Address</label> <br>
+            <input class="update-address" onkeydown="entry1(event,'update-jobwork')" id="update-address" type="text">
+            <br>
+            <label for="update-jobwork" onkeydown="entry(event)">Job</label> <br>
+            <input class="update-jobwork" onkeydown="entry(event)" id="update-jobwork" type="text"> <br> <br>
+
+            <button id="btn-update" onclick="update()">Update</button>
+            <button id="update-cancel" onclick="updateCancel()">Cancel</button>
+        </div>
+    </div>
+    <div class="background-modal" id="background-modal"></div>
+    <div class="logout-message" id="logout-message">
+        <div>You have not signed in</div> <br>
+        <a href="/login.html">Login</a>
+    </div>
+
+
+
+    <script>
+        let indexUs = localStorage.getItem("indexLogin");
+        let inforUs = JSON.parse(localStorage.getItem("userInfor"));
+        let inforUserName = document.getElementById("user-name");
+        let inforEml = document.getElementById("eml");
+        let usName = JSON.parse(localStorage.getItem("information"))[indexUs].username;
+        let eml = JSON.parse(localStorage.getItem("information"))[indexUs].email;
+        inforUserName.innerHTML = usName;
+        inforEml.innerHTML = eml;
+        let indexUs1;
+        let flag = true;
+        console.log(inforUs);
+        if (inforUs == null) {
+            inforUs = [];
+            flag = false;
+            indexUs1 = 0;
+        } else {
+            for (let i = 0; i < inforUs.length; i++) {
+                if (inforUs[i].Id == indexUs) {
+                    indexUs1 = i;
+                    flag = true;
+                    break;
+                } else {
+                    flag = false;
+                    indexUs1 = Number(i) + 1;
+                }
+            }
+        }
+        if (inforUs != null) {
+            if (flag == true) {
+                let getIdName = document.getElementById("name");
+                let getIdAge = document.getElementById("age");
+                let getIdMobile = document.getElementById("mobile");
+                let getIdAddress = document.getElementById("address");
+                let getIdJobwork = document.getElementById("jobwork");
+                console.log(inforUs[indexUs1]);
+                console.log(getIdName);
+                getIdName.innerHTML = inforUs[indexUs1].Name;
+                getIdAge.innerHTML = inforUs[indexUs1].Age;
+                getIdMobile.innerHTML = inforUs[indexUs1].Mobile;
+                getIdAddress.innerHTML = inforUs[indexUs1].Address;
+                getIdJobwork.innerHTML = inforUs[indexUs1].Jobwork;
+            }
+        }
+        // Hiện tên người dùng trong trang web
+        let user = document.getElementById("user");
+        if (inforUs[indexUs1] == null || inforUs[indexUs1].Name == "") {
+            user.innerHTML = inforUserName.innerHTML;
+        } else {
+            let Name = inforUs[indexUs1].Name;
+            user.innerHTML = Name;
+        }
+        // Tạo câu hỏi và câu trả lời
+        let arrQues = [
+            { ques: "あ", ans: ["a", "i", "u", "e"], click: false, id: "" },
+            { ques: "い", ans: ["i", "o", "e", "a"], click: false, id: "" },
+            { ques: "う", ans: ["e", "i", "u", "o"], click: false, id: "" },
+            { ques: "え", ans: ["u", "e", "a", "o"], click: false, id: "" },
+            { ques: "お", ans: ["i", "o", "u", "e"], click: false, id: "" },
+
+            { ques: "か", ans: ["ka", "ki", "ku", "ko"], click: false, id: "" },
+            { ques: "き", ans: ["ki", "ko", "ke", "ka"], click: false, id: "" },
+            { ques: "く", ans: ["ko", "ku", "ki", "ke"], click: false, id: "" },
+            { ques: "け", ans: ["ka", "ke", "ku", "ko"], click: false, id: "" },
+            { ques: "こ", ans: ["ka", "ki", "ku", "ko"], click: false, id: "" },
+
+            { ques: "が", ans: ["ka", "ga", "ku", "go"], click: false, id: "" },
+            { ques: "ぎ", ans: ["go", "gi", "ki", "ko"], click: false, id: "" },
+            { ques: "ぐ", ans: ["ke", "gu", "ku", "ge"], click: false, id: "" },
+            { ques: "げ", ans: ["gi", "ki", "ke", "ge"], click: false, id: "" },
+            { ques: "ご", ans: ["ga", "gi", "gu", "go"], click: false, id: "" },
+
+            { ques: "さ", ans: ["za", "shi", "sa", "ji"], click: false, id: "" },
+            { ques: "し", ans: ["shi", "ji", "i", "ki"], click: false, id: "" },
+            { ques: "す", ans: ["bu", "zu", "su", "u"], click: false, id: "" },
+            { ques: "せ", ans: ["e", "ke", "ze", "se"], click: false, id: "" },
+            { ques: "そ", ans: ["bo", "zo", "ko", "so"], click: false, id: "" },
+
+            { ques: "ざ", ans: ["so", "ji", "ke", "za"], click: false, id: "" },
+            { ques: "じ", ans: ["zu", "ji", "shi", "sa"], click: false, id: "" },
+            { ques: "ず", ans: ["ta", "su", "na", "zu"], click: false, id: "" },
+            { ques: "ぜ", ans: ["ze", "ji", "zo", "za"], click: false, id: "" },
+            { ques: "ぞ", ans: ["ka", "ji", "su", "zo"], click: false, id: "" },
+
+            { ques: "た", ans: ["chi", "pi", "ta", "na"], click: false, id: "" },
+            { ques: "ち", ans: ["shi", "chi", "ni", "mi"], click: false, id: "" },
+            { ques: "つ", ans: ["su", "zu", "tsu", "ku"], click: false, id: "" },
+            { ques: "て", ans: ["ke", "se", "me", "te"], click: false, id: "" },
+            { ques: "と", ans: ["ko", "mo", "to", "zo"], click: false, id: "" },
+
+            { ques: "だ", ans: ["da", "zu", "do", "de"], click: false, id: "" },
+            { ques: "ぢ", ans: ["ki", "mo", "chi", "ji"], click: false, id: "" },
+            { ques: "づ", ans: ["tsu", "su", "mu", "nu"], click: false, id: "" },
+            { ques: "で", ans: ["da", "de", "te", "ta"], click: false, id: "" },
+            { ques: "ど", ans: ["to", "tsu", "do", "so"], click: false, id: "" },
+
+            { ques: "な", ans: ["ma", "ta", "ka", "na"], click: false, id: "" },
+            { ques: "に", ans: ["ji", "ni", "shi", "tsu"], click: false, id: "" },
+            { ques: "ぬ", ans: ["me", "ne", "nu", "no"], click: false, id: "" },
+            { ques: "ね", ans: ["na", "ni", "nu", "ne"], click: false, id: "" },
+            { ques: "の", ans: ["me", "mi", "mu", "o"], click: false, id: "" },
+
+            { ques: "ま", ans: ["ha", "ma", "mo", "mu"], click: false, id: "" },
+            { ques: "み", ans: ["chi", "mi", "shi", "ki"], click: false, id: "" },
+            { ques: "む", ans: ["nu", "ne", "ru", "mu"], click: false, id: "" },
+            { ques: "め", ans: ["no", "wa", "nu", "me"], click: false, id: "" },
+            { ques: "も", ans: ["ha", "ma", "mo", "wo"], click: false, id: "" },
+
+            { ques: "は", ans: ["ba", "pa", "ha", "ma"], click: false, id: "" },
+            { ques: "ひ", ans: ["hi", "re", "ro", "zo"], click: false, id: "" },
+            { ques: "ふ", ans: ["fu", "ji", "bu", "bi"], click: false, id: "" },
+            { ques: "へ", ans: ["ze", "hi", "he", "ho"], click: false, id: "" },
+            { ques: "ほ", ans: ["ha", "ho", "pa", "po"], click: false, id: "" },
+
+            { ques: "ば", ans: ["ka", "ga", "ba", "pa"], click: false, id: "" },
+            { ques: "び", ans: ["pi", "mi", "shi", "bi"], click: false, id: "" },
+            { ques: "ぶ", ans: ["pu", "po", "fu", "ho"], click: false, id: "" },
+            { ques: "べ", ans: ["pi", "pe", "he", "be"], click: false, id: "" },
+            { ques: "ぼ", ans: ["ka", "ki", "ku", "ko"], click: false, id: "" },
+
+            { ques: "ぱ", ans: ["ba", "ha", "pa", "za"], click: false, id: "" },
+            { ques: "ぴ", ans: ["pi", "ji", "shi", "bi"], click: false, id: "" },
+            { ques: "ぷ", ans: ["fu", "bu", "pu", "ku"], click: false, id: "" },
+            { ques: "ぺ", ans: ["he", "pe", "be", "de"], click: false, id: "" },
+            { ques: "ぽ", ans: ["bo", "zo", "po", "do"], click: false, id: "" },
+
+            { ques: "ら", ans: ["e", "a", "ru", "ra"], click: false, id: "" },
+            { ques: "り", ans: ["re", "ri", "i", "shi"], click: false, id: "" },
+            { ques: "る", ans: ["ro", "ra", "ru", "re"], click: false, id: "" },
+            { ques: "れ", ans: ["ro", "ne", "wa", "re"], click: false, id: "" },
+            { ques: "ろ", ans: ["ru", "ro", "wo", "n"], click: false, id: "" },
+
+            { ques: "や", ans: ["ka", "ga", "ya", "yu"], click: false, id: "" },
+            { ques: "ゆ", ans: ["yo", "wa", "me", "yu"], click: false, id: "" },
+            { ques: "よ", ans: ["yo", "yu", "ya", "n"], click: false, id: "" },
+            { ques: "わ", ans: ["ne", "wa", "re", "yu"], click: false, id: "" },
+            { ques: "を", ans: ["wa", "da", "wo", "n"], click: false, id: "" },
+            { ques: "ん", ans: ["n", "e", "ne", "mu"], click: false, id: "" },
+
+
+
+        ];
+        let arrTest = [
+            { question: "あ", answer: "a" },
+            { question: "い", answer: "i" },
+            { question: "う", answer: "u" },
+            { question: "え", answer: "e" },
+            { question: "お", answer: "o" },
+
+            { question: "か", answer: "ka" },
+            { question: "き", answer: "ki" },
+            { question: "く", answer: "ku" },
+            { question: "け", answer: "ke" },
+            { question: "こ", answer: "ko" },
+
+            { question: "が", answer: "ga" },
+            { question: "ぎ", answer: "gi" },
+            { question: "ぐ", answer: "gu" },
+            { question: "げ", answer: "ge" },
+            { question: "ご", answer: "go" },
+
+            { question: "さ", answer: "sa" },
+            { question: "し", answer: "shi" },
+            { question: "す", answer: "su" },
+            { question: "せ", answer: "se" },
+            { question: "そ", answer: "so" },
+
+            { question: "ざ", answer: "za" },
+            { question: "じ", answer: "ji" },
+            { question: "ず", answer: "zu" },
+            { question: "ぜ", answer: "ze" },
+            { question: "ぞ", answer: "zo" },
+
+            { question: "た", answer: "ta" },
+            { question: "ち", answer: "chi" },
+            { question: "つ", answer: "tsu" },
+            { question: "て", answer: "te" },
+            { question: "と", answer: "to" },
+
+            { question: "だ", answer: "da" },
+            { question: "ぢ", answer: "ji" },
+            { question: "づ", answer: "zu" },
+            { question: "で", answer: "de" },
+            { question: "ど", answer: "do" },
+
+            { question: "な", answer: "na" },
+            { question: "に", answer: "ni" },
+            { question: "ぬ", answer: "nu" },
+            { question: "ね", answer: "ne" },
+            { question: "の", answer: "no" },
+
+            { question: "ま", answer: "ma" },
+            { question: "み", answer: "mi" },
+            { question: "む", answer: "mu" },
+            { question: "め", answer: "me" },
+            { question: "も", answer: "mo" },
+
+            { question: "は", answer: "ha" },
+            { question: "ひ", answer: "hi" },
+            { question: "ふ", answer: "fu" },
+            { question: "へ", answer: "he" },
+            { question: "ほ", answer: "ho" },
+
+            { question: "ば", answer: "ba" },
+            { question: "び", answer: "bi" },
+            { question: "ぶ", answer: "bu" },
+            { question: "べ", answer: "be" },
+            { question: "ぼ", answer: "bo" },
+
+            { question: "ぱ", answer: "pa" },
+            { question: "ぴ", answer: "pi" },
+            { question: "ぷ", answer: "pu" },
+            { question: "ぺ", answer: "pe" },
+            { question: "ぽ", answer: "po" },
+
+            { question: "ら", answer: "ra" },
+            { question: "り", answer: "ri" },
+            { question: "る", answer: "ru" },
+            { question: "れ", answer: "re" },
+            { question: "ろ", answer: "ro" },
+
+            { question: "や", answer: "ya" },
+            { question: "ゆ", answer: "yu" },
+            { question: "よ", answer: "yo" },
+            { question: "わ", answer: "wa" },
+            { question: "を", answer: "wo" },
+            { question: "ん", answer: "n" },
+
+        ]
+        localStorage.setItem("test", JSON.stringify(arrTest));
+        // // check sự kiện handle click 
+        // hideTable("menu");
+        // function hideTable(id) {
+        //     let getId = document.getElementById(id);
+        //     if (getId.style.display === "block") {
+        //         document.addEventListener("click", function handleClick(event) {
+        //             let check = event.target.classList.contains(id);
+        //             console.log(check);
+        //             if (check == false) {
+        //                 getId.setAttribute("style", "display:none");
+        //             }
+        //         });
+        //     }
+        // }
+        // Hàm kiểm tra đáp án
+        ktr = 0;
+        ktw = 0;
+        pt = 0;
+        function checkAnswer(idAns, idQuest) {
+            console.log(this);
+
+            let getAnswer = document.getElementById(idAns).innerHTML;
+            let getQuest = document.getElementById(idQuest).innerHTML;
+            let rightAns = document.getElementById("right-ans");
+            let wrongAns = document.getElementById("wrong-ans");
+            let point = document.getElementById("point");
+            let test = JSON.parse(localStorage.getItem("test"));
+            let answerResult = document.getElementsByClassName("answer-result");
+
+            for (let i in test) {
+                if (getQuest == test[i].question) {
+                    if (getAnswer == test[i].answer) {
+                        document.getElementById(idAns).setAttribute("style", "background-color: rgb(73, 237, 41);box-shadow: none");
+                        ktr++;
+                        rightAns.innerHTML = `${ktr}`;
+                    } else {
+                        document.getElementById(idAns).setAttribute("style", "background-color: red;box-shadow: none");
+                        ktw++;
+                        wrongAns.innerHTML = `${ktw}`;
+                    }
+                    break;
+                }
+            }
+            for (let i in arrQues) {
+                if (getQuest == arrQues[i].ques) {
+                    arrQues[i].click = "true";
+                    arrQues[i].id = idAns;
+                }
+            }
+            pt = 10 * (ktr / arrQues.length);
+            point.innerHTML = `${pt.toFixed(2)}`;
+            let answerModal = document.getElementById("answer-modal");
+            answerModal.setAttribute("style", "display:block");
+        }
+        // Hàm next câu hỏi
+        let ichi = 0;
+        function nextQues() {
+            ichi++;
+            document.getElementById("question").innerHTML = arrQues[ichi].ques;
+            let answerResult = document.getElementsByClassName("answer-result");
+            for (let i = 0; i < 4; i++) {
+                answerResult[i].innerHTML = arrQues[ichi].ans[i];
+            }
+
+            let btnNext = document.getElementById("btn-next-ques");
+            let btnComplete = document.getElementById("btn-complete");
+            let btnBack = document.getElementById("btn-back-ques");
+            let answerModal = document.getElementById("answer-modal");
+
+            let getQuest = document.getElementById("question").innerHTML;
+            for (let index in arrQues) {
+                if (getQuest == arrQues[index].ques) {
+                    if (arrQues[index].click == "true") {
+                        let getAnswer = document.getElementById(arrQues[index].id).innerHTML;
+                        let test = JSON.parse(localStorage.getItem("test"));
+                        for (let i = 0; i < 4; i++) {
+                            answerResult[i].setAttribute("style", "box-shadow:block;background-color:rgb(204, 144, 226)")
+                        }
+                        for (let j in test) {
+                            if (getQuest == test[j].question) {
+                                if (getAnswer == test[j].answer) {
+                                    document.getElementById(arrQues[index].id).setAttribute("style", "background-color: rgb(73, 237, 41);box-shadow: none");
+                                } else {
+                                    document.getElementById(arrQues[index].id).setAttribute("style", "background-color: red;box-shadow: none");
+                                }
+                                break;
+                            }
+                        }
+                        answerModal.setAttribute("style", "display:block");
+                        if (ichi != 0) {
+                            btnBack.setAttribute("style", "display:block");
+                        }
+                        if (ichi == arrQues.length - 1) {
+                            btnNext.setAttribute("style", "display:none");
+                            btnComplete.setAttribute("style", "display:block");
+                        }
+                    } else {
+
+                        if (answerModal.style.display == "block") {
+                            answerModal.setAttribute("style", "display:none");
+                        }
+                        for (let i = 0; i < 4; i++) {
+                            answerResult[i].setAttribute("style", "box-shadow:block;background-color:rgb(204, 144, 226)");
+                            // answerResult[i].addEventListener('mouseover', function () {
+                            //     answerResult[i].setAttribute("style", "background-color:rgb(233, 233, 48)");
+                            // });
+                            // answerResult[i].addEventListener('mouseout', function () {
+                            //     answerResult[i].setAttribute("style", "background-color:rgb(204, 144, 226)");
+                            // });
+                        }
+                        console.log(this);
+                        if (ichi != 0) {
+                            btnBack.setAttribute("style", "display:block");
+                        }
+                        if (ichi == arrQues.length - 1) {
+                            btnNext.setAttribute("style", "display:none");
+                            btnComplete.setAttribute("style", "display:block");
+                        }
+                    }
+                }
+            }
+
+        }
+        // hàm trở về câu hỏi trước
+        function backQues() {
+            --ichi;
+            document.getElementById("question").innerHTML = arrQues[ichi].ques;
+            let answerResult = document.getElementsByClassName("answer-result");
+            for (let i = 0; i < 4; i++) {
+                answerResult[i].innerHTML = arrQues[ichi].ans[i];
+            }
+
+            let btnNext = document.getElementById("btn-next-ques");
+            let btnComplete = document.getElementById("btn-complete");
+            let btnBack = document.getElementById("btn-back-ques");
+            let answerModal = document.getElementById("answer-modal");
+
+            let getQuest = document.getElementById("question").innerHTML;
+            for (let index in arrQues) {
+                if (getQuest == arrQues[index].ques) {
+                    if (arrQues[index].click == "true") {
+                        let getAnswer = document.getElementById(arrQues[index].id).innerHTML;
+                        let test = JSON.parse(localStorage.getItem("test"));
+                        for (let i = 0; i < 4; i++) {
+                            answerResult[i].setAttribute("style", "box-shadow:block;background-color:rgb(204, 144, 226)")
+                        }
+                        for (let j in test) {
+                            if (getQuest == test[j].question) {
+                                if (getAnswer == test[j].answer) {
+                                    document.getElementById(arrQues[index].id).setAttribute("style", "background-color: rgb(73, 237, 41);box-shadow: none");
+                                } else {
+                                    document.getElementById(arrQues[index].id).setAttribute("style", "background-color: red;box-shadow: none");
+                                }
+                                break;
+                            }
+                        }
+                        answerModal.setAttribute("style", "display:block");
+                        if (ichi != arrQues.length) {
+                            btnNext.setAttribute("style", "display:block;width:130px");
+                            btnComplete.setAttribute("style", "display:none");
+                        }
+                        if (ichi == 0) {
+                            btnBack.setAttribute("style", "display:none");
+                        }
+                    } else {
+                        if (answerModal.style.display == "block") {
+                            answerModal.setAttribute("style", "display:none");
+                        }
+                        if (ichi != arrQues.length) {
+                            btnNext.setAttribute("style", "display:block;width:130px");
+                            btnComplete.setAttribute("style", "display:none");
+                        }
+                        for (let i = 0; i < 4; i++) {
+                            answerResult[i].setAttribute("style", "box-shadow:block;background-color:rgb(204, 144, 226)")
+                            // answerResult[i].addEventListener('mouseover', function () {
+                            //     answerResult[i].setAttribute("style", "background-color:rgb(233, 233, 48)");
+
+                            // });
+                            // answerResult[i].addEventListener('mouseout', function () {
+                            //     answerResult[i].setAttribute("style", "background-color:rgb(204, 144, 226)");
+                            // });
+                        }
+                        document.getElementById("question").innerHTML = arrQues[ichi].ques;
+                        for (let i = 0; i < 4; i++) {
+                            answerResult[i].innerHTML = arrQues[ichi].ans[i];
+                        }
+                        if (ichi == 0) {
+                            btnBack.setAttribute("style", "display:none");
+                        }
+                    }
+                }
+            }
+        }
+
+        // Hàm hoàn thành bài thi
+        function complete() {
+            let getQues = document.getElementById("question");
+            let getAns = document.getElementById("answer");
+            let btnNext = document.getElementById("btn-next-ques");
+            let btnComplete = document.getElementById("btn-complete");
+            let btnBack = document.getElementById("btn-back-ques");
+            let answerModal = document.getElementById("answer-modal");
+            let resultProperty = document.getElementsByClassName("result-property");
+            let testMenu = document.getElementById("test-menu");
+            testMenu.setAttribute("style", "display:block");
+            getAns.setAttribute("style", "display:none");
+            getQues.setAttribute("style", "display:none");
+            btnComplete.setAttribute("style", "display:none");
+            btnBack.setAttribute("style", "display:none");
+            btnNext.setAttribute("style", "display:none");
+            answerModal.setAttribute("style", "display:none");
+            for (i in resultProperty) {
+                resultProperty[i].innerHTML = 0;
+            }
+            ktr = 0;
+            ktw = 0;
+            pt = 0;
+            ichi = 0;
+            document.getElementById("question").innerHTML = arrQues[ichi].ques;
+            let answerResult = document.getElementsByClassName("answer-result");
+            for (let i = 0; i < 4; i++) {
+                answerResult[i].innerHTML = arrQues[ichi].ans[i];
+            }
+            for (let i in arrQues) {
+                arrQues[i].click = "false";
+                arrQues[i].id = "";
+            }
+        }
+        // Mở thẻ kiểm tra
+        function beginnerTestShow() {
+            console.log(ichi);
+            document.getElementById("question").innerHTML = arrQues[ichi].ques;
+            let answerResult = document.getElementsByClassName("answer-result");
+            for (let i = 0; i < 4; i++) {
+                answerResult[i].innerHTML = arrQues[ichi].ans[i];
+                document.getElementById(answerResult[i].id).setAttribute("style", "box-shadow:block;background-color:rgb(204, 144, 226)")
+            }
+            let testMenu = document.getElementById("test-menu");
+            let btnNext = document.getElementById("btn-next-ques");
+            let getQues = document.getElementById("question");
+            let getAns = document.getElementById("answer");
+            testMenu.setAttribute("style", "display:none");
+            getAns.setAttribute("style", "display:block");
+            getQues.setAttribute("style", "display:block");
+            btnNext.setAttribute("style", "display:block;width:130px");
+
+        }
+        // Show các thẻ học
+        function showCart() {
+            let mainText = document.getElementById("main-text");
+            let mainContent = document.getElementById("main-content");
+            let mainBtn = document.getElementById("main-btn");
+            mainText.setAttribute("style", "display:none");
+            mainBtn.setAttribute("style", "display:none");
+            mainContent.setAttribute("style", "display:block");
+        }
+        function hideCart() {
+            let mainText = document.getElementById("main-text");
+            let mainContent = document.getElementById("main-content");
+            let mainBtn = document.getElementById("main-btn");
+            mainText.setAttribute("style", "display:block");
+            mainBtn.setAttribute("style", "display:block");
+            mainContent.setAttribute("style", "display:none");
+        }
+        // Show Hiragana
+        function show(id) {
+            let getID = document.getElementById(id);
+            let backIcon = document.getElementById("back-icon");
+            getID.setAttribute("style", "display:block");
+            backIcon.setAttribute("style", "display:block");
+        }
+        function hide() {
+            let hiraHide = document.getElementById("hiragana");
+            let kataHide = document.getElementById("katakana");
+            let backIcon = document.getElementById("back-icon");
+            let amGhep = document.getElementById("am-ghep")
+            hiraHide.setAttribute("style", "display:none");
+            kataHide.setAttribute("style", "display:none");
+            amGhep.setAttribute("style", "display:none");
+            backIcon.setAttribute("style", "display:none");
+        }
+        // Hàm gán xuất giá trị tên đăng nhập và email
+        function updateInfor(id, value) {
+            let getId = document.getElementById(id);
+            if (inforUs[indexUs1] != undefined) {
+                getId.innerHTML = inforUs[indexUs1][value];
+            }
+        }
+        // Hàm cập nhật thông tin tài khoản
+        function update() {
+            let usName = document.getElementById("update-name").value;
+            let usAge = document.getElementById("update-age").value;
+            let usMobile = document.getElementById("update-mobile").value;
+            let usAddess = document.getElementById("update-address").value;
+            let usJobwork = document.getElementById("update-jobwork").value;
+            let obj = {
+                Id: indexUs,
+                Name: usName,
+                Age: usAge,
+                Mobile: usMobile,
+                Address: usAddess,
+                Jobwork: usJobwork
+            }
+            if (inforUs == null) {
+                inforUs = [];
+                inforUs.push(obj);
+                localStorage.setItem("userInfor", JSON.stringify(inforUs));
+                updateInfor("name", "Name");
+                updateInfor("age", "Age");
+                updateInfor("mobile", "Mobile");
+                updateInfor("address", "Address");
+                updateInfor("jobwork", "Jobwork");
+                let upInfor = document.getElementById("update-infor");
+                upInfor.setAttribute("style", "display:none");
+                return;
+            } else {
+                if (indexUs1 == undefined) {
+                    inforUs.push(obj);
+                    localStorage.setItem("userInfor", JSON.stringify(inforUs));
+                    updateInfor("name", "Name");
+                    updateInfor("age", "Age");
+                    updateInfor("mobile", "Mobile");
+                    updateInfor("address", "Address");
+                    updateInfor("jobwork", "Jobwork");
+                    let upInfor = document.getElementById("update-infor");
+                    upInfor.setAttribute("style", "display:none");
+
+                } else {
+                    inforUs[indexUs1] = obj;
+                    localStorage.setItem("userInfor", JSON.stringify(inforUs));
+                    updateInfor("name", "Name");
+                    updateInfor("age", "Age");
+                    updateInfor("mobile", "Mobile");
+                    updateInfor("address", "Address");
+                    updateInfor("jobwork", "Jobwork");
+                    let upInfor = document.getElementById("update-infor");
+                    upInfor.setAttribute("style", "display:none");
+                }
+            }
+        }
+        // Hàm nhấn Enter thay cho nút
+        function entry(event) {
+            if (event.key == "Enter") {
+                update();
+            }
+        }
+        // Hàm ấn Enter thay cho chuyển Tab
+        function entry1(event, input) {
+            if (event.key == "Enter") {
+                let idInput = document.getElementById(input);
+                idInput.focus();
+            }
+        }
+
+        // Lưu giá trị thông tin người dùng trước đó
+        function currentInfor(id, gt) {
+            let getId = document.getElementById(id);
+            if (inforUs[indexUs1] != undefined) {
+                getId.value = inforUs[indexUs1][gt];
+            }
+        }
+        // Hàm ấn nút cập nhật
+        function updateEntry() {
+            let updateInfor = document.getElementById("update-infor");
+            updateInfor.setAttribute("style", "display:block");
+            currentInfor("update-name", "Name");
+            currentInfor("update-age", "Age");
+            currentInfor("update-mobile", "Mobile");
+            currentInfor("update-address", "Address");
+            currentInfor("update-jobwork", "Jobwork");
+
+        }
+        // Hàm ấn nút hủy cập nhật
+        function updateCancel() {
+            let upInfor = document.getElementById("update-infor");
+            upInfor.setAttribute("style", "display:none");
+        }
+        // Hàm ẩn hiện con mắt xem mật khẩu
+        function showPassword(input, icon) {
+            let getId = document.getElementById(input);
+            let geticon = document.getElementById(icon);
+            if (getId.type == "password") {
+                getId.type = "text";
+                geticon.classList.remove("fa-eye");
+                geticon.classList.add("fa-eye-slash");
+            } else {
+                getId.type = "password";
+                geticon.classList.remove("fa-eye-slash");
+                geticon.classList.add("fa-eye");
+            }
+        }
+        // Hàm ẩn hiện con mắt xem mật khẩu nhập lại
+        function showList() {
+            let menu = document.getElementById("menu");
+            if (menu.style.display == "" || menu.style.display == "none") {
+                menu.setAttribute("style", "display:block");
+            } else {
+                menu.setAttribute("style", "display:none");
+            }
+        }
+        // Hàm kiểm tra xem người dùng đang đăng nhập hay đăng xuất rồi
+        function check() {
+            let index = localStorage.getItem("indexLogin");
+            let logOutMessage = document.getElementById("logout-message");
+            let backgroundModal = document.getElementById("background-modal")
+            if (index == null) {
+                backgroundModal.setAttribute("style", "display:block");
+                logOutMessage.setAttribute("style", "display:block");
+            } else {
+                backgroundModal.setAttribute("style", "display:none");
+                logOutMessage.setAttribute("style", "display:none");
+            }
+        }
+        // Hàm đăng xuất
+        function logOut() {
+            let index = localStorage.getItem("indexLogin");
+            localStorage.setItem("boolLogin", "false");
+            localStorage.setItem("indexLogout", index);
+            localStorage.removeItem("indexLogin");
+            window.location.href = "/login.html"
+        }
+        // Hàm ẩn hiện hộp đổi mật khẩu
+        function showChangeBox() {
+            let changePasswordModal = document.getElementById("changePassword-modal");
+            let changePassword = document.getElementById("changePassword");
+            let menu = document.getElementById("menu");
+            changePasswordModal.setAttribute("style", "display:block");
+            changePassword.setAttribute("style", "display:block");
+            menu.setAttribute("style", "display:none");
+        }
+        // Hàm hủy đổi mật khẩu
+        function cancel() {
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let changePasswordModal = document.getElementById("changePassword-modal");
+            let changePassword = document.getElementById("changePassword");
+            changePasswordModal.setAttribute("style", "display:none");
+            changePassword.setAttribute("style", "display:none");
+        }
+        // Hàm kiểm tra giá trị mật khẩu người dùng nhập vào có trùng trong bộ nhớ hay không
+        function checkInput(id) {
+            let getIndex = Number(localStorage.getItem("index"));
+            let getUserInput = JSON.parse(localStorage.getItem("information"));
+            let idInput = document.getElementById(id).value;
+            if (id == "oldPassword") {
+                if (idInput !== getUserInput[getIndex].password) {
+                    let oldPasswordError = document.getElementById("oldPasswordError");
+                    oldPasswordError.setAttribute("style", "display:block;color:red");
+                } else {
+                    oldPasswordError.setAttribute("style", "display:none");
+                    return true;
+                }
+            } else {
+                if (idInput == getUserInput[getIndex].password) {
+                    let passwordExits = document.getElementById("passwordExits");
+                    passwordExits.setAttribute("style", "display:block;color:red");
+                } else {
+                    passwordExits.setAttribute("style", "display:none");
+                    return true;
+                }
+            }
+        }
+        // Hàm kiểm tra và so sánh khi ấn vào nút lưu để lưu mật khẩu mới
+        function changePassword() {
+            let getUserInput = JSON.parse(localStorage.getItem("information"));
+            let getIndex = Number(localStorage.getItem("index"));
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let confirmPasswordError = document.getElementById("confirmPasswordError");
+            if (checkInput("oldPassword") == true && checkInput("password") == true) {
+                if (password == confirmPassword) {
+                    getUserInput[getIndex].password = password;
+                    localStorage.setItem("information", JSON.stringify(getUserInput));
+                    confirmPasswordError.setAttribute("style", "display:none");
+                    alert("Bạn đã đổi mật khẩu thành công");
+                    document.getElementById("password").value = "";
+                    document.getElementById("oldPassword").value = "";
+                    document.getElementById("confirmPassword").value = "";
+                    cancel();
+                } else {
+                    confirmPasswordError.setAttribute("style", "display:block;color:red");
+                }
+            }
+        }
+        // Hàm hiện bảng thông tin người dùng
+        function infor() {
+            let userInforModal = document.getElementById("user-infor-modal");
+            userInforModal.setAttribute("style", "display:block");
+            let userInfor = document.getElementById("user-infor");
+            userInfor.setAttribute("style", "display:block");
+            let menu = document.getElementById("menu");
+            menu.setAttribute("style", "display:none");
+        }
+        // Hàm đóng bảng thông tin người dùng
+        function userOut() {
+            let userInfor = document.getElementById("user-infor");
+            userInfor.setAttribute("style", "display:none");
+            let userInforModal = document.getElementById("user-infor-modal");
+            userInforModal.setAttribute("style", "display:none");
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>
